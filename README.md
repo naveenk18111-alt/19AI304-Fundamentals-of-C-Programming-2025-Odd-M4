@@ -2,514 +2,227 @@
 # IAPR-4- Module 4 - FoC
 ## 7. Implementation of Functions.
 ## 8. Implementation of passing parameters.
-# Ex.No:16
-  Implement a C program to read a date in the format DD/MM/YYYY and determine whether the entered date is valid. The program should check the correctness of the day, month, and year, including leap year calculations for February.
-# Date : 22/05/2026
-# Aim:
- To implement a C program that validates a user-entered date using a function without parameters and without return value, ensuring the correctness of day, month, year, and leap year conditions.
-# Algorithm:
-### Step 1:
-  Start
-### Step 2: 
-  Include the standard input-output library: #include<stdio.h>.
-### Step 3:
-### Call the function `validateDate()`.
-### Inside `validateDate()` function:
-### Step 4: 
-  Declare variables `dd`, `mm`, and `yy`.
-### Step 5: 
-  Ask the user to enter a date in `DD/MM/YYYY` format.
-### Step 6: 
-  Read the date values using `scanf`.
-### Step 7: 
-  Check if the year is between **1900 and 9999**.
- - If the year is invalid, display **"Year is not valid"** and stop further checks.
-### Step 8: 
-  Check if the month is between **1 and 12**.
-- If the month is invalid, display **"Month is not valid"** and stop further checks.
-### Step 9: 
-  If the month has **31 days**, check if the day is between **1 and 31**.
-### Step 10: 
-  If the month has **30 days**, check if the day is between **1 and 30**.
-### Step 11: 
-  If the month is **February**:
-  - Check if the day is between **1 and 28**, or if the day is **29**, verify if it's a **leap year**.
-### Step 12: 
-  If any valid condition is satisfied, display **"Date is valid."**
-### Step 13: 
-  Otherwise, display **"Date is invalid."**
-### Step 14: 
-  Stop
-# Program:
+# EX-16-LEFT-SHIFT-OPERATION
+## AIM
+To write a C Program to perform the basic left shift operation for 44 integer number with 3 shifts.
+
+## ALGORITHM
+1.	Start the program.
+2.	Assign values of a and b as 44 and 3.
+3.	Use left shift operator (<<) and shift the value of a three times.
+4.	Display the result.
+5.	Stop the program.
+
+## PROGRAM
 ```
-#include<stdio.h>
-
-void validateDate();
-
-int main()
-{
-    validateDate();
+#include <stdio.h>
+int main() {
+    int num = 44;
+    int shift = 3;
+    int result;
+    result = num << shift;
+    printf("Number before left shift: %d\n", num);
+    printf("Number after left shift by %d positions: %d\n", shift, result);
     return 0;
 }
 
-void validateDate()
-{
-    int dd, mm, yy;
-    int valid = 0;
-
-    printf("Enter date (DD/MM/YYYY): ");
-    scanf("%d/%d/%d", &dd, &mm, &yy);
-
-    if(yy < 1900 || yy > 9999)
-    {
-        printf("Year is not valid");
-        return;
-    }
-
-    if(mm < 1 || mm > 12)
-    {
-        printf("Month is not valid");
-        return;
-    }
-
-    if(mm == 1 || mm == 3 || mm == 5 || mm == 7 ||
-       mm == 8 || mm == 10 || mm == 12)
-    {
-        if(dd >= 1 && dd <= 31)
-            valid = 1;
-    }
-    else if(mm == 4 || mm == 6 || mm == 9 || mm == 11)
-    {
-        if(dd >= 1 && dd <= 30)
-            valid = 1;
-    }
-    else if(mm == 2)
-    {
-        if(dd >= 1 && dd <= 28)
-        {
-            valid = 1;
-        }
-        else if(dd == 29)
-        {
-            if((yy % 400 == 0) || (yy % 4 == 0 && yy % 100 != 0))
-            {
-                valid = 1;
-            }
-        }
-    }
-
-    if(valid)
-        printf("Date is valid.");
-    else
-        printf("Date is invalid.");
-}
 ```
-# Output:
-```
-Enter date (DD/MM/YYYY): 29/02/2024
-Date is valid.
-```
-# Result: 
-Thus, the program was implemented and executed successfully, and the required output was obtained.
+## OUTPUT
+<img width="1046" height="625" alt="M41" src="https://github.com/user-attachments/assets/639d28fe-b64b-4499-9936-237b08845f1a" />
 
 
-# 19AI304-Fundamentals-of-C-Programming-2025-Odd-M4
-# IAPR-4- Module 4 - FoC
-# Ex.No:17
-  Develop a C program to read two numbers from the user and determine the maximum and minimum values. Use user-defined functions with arguments and return values—one function to find the maximum (max()) and another to find the minimum (min()).
-# Date : 22/05/2026
-# Aim:
- To develop a C program that uses functions with parameters and return values to compute and display the maximum and minimum of two user-entered numbers.
-# Algorithm:
-### Step 1:
-  Start
-### Step 2: 
-  Include the standard input-output library: #include<stdio.h>.
-### Step 3: 
-  Declare variables `num1`, `num2`, `maximum`, and `minimum`.
-### Step 4: 
-  Ask the user to enter two numbers.
-### Step 5: 
-  Read the numbers using `scanf`.
-### Step 6: 
-  Call the function `max(num1, num2)`.
-### Step 7: 
-  Inside function `max(num1, num2)`:
-- **Step 7.1:** Receive two integer arguments.  
-- **Step 7.2:** Compare the two numbers.  
-- **Step 7.3:** If `num1 > num2`, return `num1`.  
-- **Step 7.4:** Otherwise, return `num2`.
-### Step 8: 
-  Store the returned value in `maximum`.
-### Step 9: 
-  Call the function `min(num1, num2)`.
-### Step 10: 
-  Inside function `min(num1, num2)`:
-- **Step 10.1:** Receive two integer arguments.  
-- **Step 10.2:** Compare the two numbers.  
-- **Step 10.3:** If `num1 > num2`, return `num2`.  
-- **Step 10.4:** Otherwise, return `num1`.
-### Step 11: 
-  Store the returned value in `minimum`.
-### Step 12: 
-  Display the returned maximum and minimum values.
-### Step 13: 
-  Stop
-# Program:
-```
-#include<stdio.h>
-
-int max(int num1, int num2);
-int min(int num1, int num2);
-
-int main()
-{
-    int num1, num2, maximum, minimum;
-
-    printf("Enter two numbers: ");
-    scanf("%d %d", &num1, &num2);
-
-    maximum = max(num1, num2);
-    minimum = min(num1, num2);
-
-    printf("Maximum = %d\n", maximum);
-    printf("Minimum = %d\n", minimum);
-
-    return 0;
-}
-
-int max(int num1, int num2)
-{
-    if(num1 > num2)
-        return num1;
-    else
-        return num2;
-}
-
-int min(int num1, int num2)
-{
-    if(num1 > num2)
-        return num2;
-    else
-        return num1;
-}
-```
-# Output:
-```
-Enter two numbers: 25 10
-Maximum = 25
-Minimum = 10
-```
-# Result: 
-Thus, the program was implemented and executed successfully, and the required output was obtained.
+## RESULT
+Thus the program to perform the basic left shift operation for 44 integer number with 3 shifts has been executed successfully.
 
 
-# 19AI304-Fundamentals-of-C-Programming-2025-Odd-M4
-# IAPR-4- Module 4 - FoC
-# Ex.No:18
-  Develop a C program to convert temperatures between Celsius and Fahrenheit: Convert Celsius to Fahrenheit using a function that returns the converted value. Convert Fahrenheit to Celsius using another function that returns the converted value. Display the results in the main() function.
-# Date :22/05/2026 
-# Aim:
- To develop a C program that converts temperatures between Celsius and Fahrenheit using functions with return values.
-# Algorithm:
-### Step 1:
-  Start
-### Step 2: 
-  Include the standard input-output library: #include<stdio.h>.  
-### Step 3:
- Declare function prototypes:
- - `float celtof();`  
- - `float ftocel();`
-### Step 4: 
-  Enter the `main()` function.
-### Step 5:
-  Call the `celtof()` function to convert Celsius to Fahrenheit.
-### Step 6: 
-  Inside `celtof()` function:
- - Declare float variables `C` and `F`.  
- - Display the message: **"Enter the temperature in Celsius"**.  
- - Read the value of `C` from the user.  
- - Calculate Fahrenheit using the formula: `F = (C * 9 / 5) + 32`.  
- - Return `F` to `main()`.
-### Step 7: 
-  Print the returned Fahrenheit value in `main()`.
-### Step 8: 
-  Call the `ftocel()` function to convert Fahrenheit to Celsius.
-### Step 9: 
-  Inside `ftocel()` function:
- - Declare float variables `f` and `celsius`.  
- - Display the message: **"Enter the temperature in Fahrenheit"**.  
- - Read the value of `f` from the user.  
- - Calculate Celsius using the formula: `celsius = (f - 32) * 5 / 9`.  
- - Return `celsius` to `main()`.
-### Step 10: 
- Print the returned Celsius value in `main()`.
-### Step 11: 
- Stop
-# Program:
-```
-#include<stdio.h>
 
-float celtof();
-float ftocel();
-
-int main()
-{
-    float fahrenheit, celsius;
-
-    fahrenheit = celtof();
-    printf("Temperature in Fahrenheit = %.2f\n", fahrenheit);
-
-    celsius = ftocel();
-    printf("Temperature in Celsius = %.2f\n", celsius);
-
-    return 0;
-}
-
-float celtof()
-{
-    float C, F;
-
-    printf("Enter the temperature in Celsius: ");
-    scanf("%f", &C);
-
-    F = (C * 9 / 5) + 32;
-
-    return F;
-}
-
-float ftocel()
-{
-    float f, celsius;
-
-    printf("Enter the temperature in Fahrenheit: ");
-    scanf("%f", &f);
-
-    celsius = (f - 32) * 5 / 9;
-
-    return celsius;
-}
-```
-# Output:
-```
-Enter the temperature in Celsius: 25
-Temperature in Fahrenheit = 77.00
-Enter the temperature in Fahrenheit: 98
-Temperature in Celsius = 36.67
-```
-# Result: 
-Thus, the program was implemented and executed successfully, and the required output was obtained.
 
  
-# 19AI304-Fundamentals-of-C-Programming-2025-Odd-M4
-# IAPR-4- Module 4 - FoC
-# Ex.No:19
-  Build a C program to print the elements of a given 4×4 matrix in spiral order starting from the top-left element and moving clockwise,using a user-defined parameterized function without return spiralPrint().
-# Date : 22/05/2026
-# Aim:
- To build a C program to display the elements of a 2D array in spiral form, traversing the outer elements first and then moving inward in a clockwise direction, using a user-defined parameterized function without return spiralPrint().
-# Algorithm:
-### Step 1:
-  Start
-### Step 2: 
-  Include the standard input-output library: #include<stdio.h>.  
-### Step 3: 
-  Define constants `R` and `C` for the number of rows and columns in the matrix.
-### Step 4: 
-  Declare a function `spiralPrint(int m, int n, int a[R][C])` to print the matrix in spiral order.
-### Step 5: 
-  Inside `spiralPrint()` function:
- - Initialize variables:  
-   - `k = 0` → starting row index  
-   - `l = 0` → starting column index  
-   - `m` → ending row index  
-   - `n` → ending column index  
- - Repeat the following while `k < m` and `l < n`:
-   - a. **Print the top row from left to right**:  
-     - Loop from column `l` to `n-1` and print `a[k][i]`.  
-     - Increment `k`.       
-   - b. **Print the last column from top to bottom**:  
-     - Loop from row `k` to `m-1` and print `a[i][n-1]`.  
-     - Decrement `n`.       
-   - c. **If `k < m`, print the bottom row from right to left**:  
-     - Loop from column `n-1` to `l` and print `a[m-1][i]`.  
-     - Decrement `m`.       
-   - d. **If `l < n`, print the first column from bottom to top**:  
-     - Loop from row `m-1` to `k` and print `a[i][l]`.  
-     - Increment `l`.
-### Step 6: 
-  In the `main()` function:
-- Declare and initialize a 4×4 matrix `a`.  
-- Call `spiralPrint(R, C, a)` to print the elements in spiral order.
-### Step 7: 
-  Stop
-# Program:
+ 
+
+
+# EX-17-TWO-NUMBERS-ARE-EQUAL-OR-NOT
+
+
+## AIM
+
+Write a C Program to check whether the two numbers are equal or not using simple if statement.
+
+## ALGORITHM
+
+1.	Start the program.
+2.	Read two numbers.
+3.	If first number is equal to second number, display both are equal.
+4.	Otherwise display both are not equal.
+5.	Stop the program.
+
+## PROGRAM
 ```
-#include<stdio.h>
-
-#define R 4
-#define C 4
-
-void spiralPrint(int m, int n, int a[R][C]);
-
-int main()
-{
-    int a[R][C] = {
-        {1, 2, 3, 4},
-        {5, 6, 7, 8},
-        {9, 10, 11, 12},
-        {13, 14, 15, 16}
-    };
-
-    printf("Spiral Order:\n");
-
-    spiralPrint(R, C, a);
-
+#include <stdio.h>
+int main() {
+    int a, b;
+    scanf("%d %d", &a, &b);
+    if(a == b)
+        printf("Both numbers are equal.\n");
+    if(a != b)
+        printf("Both numbers are not equal.\n");
     return 0;
 }
 
-void spiralPrint(int m, int n, int a[R][C])
-{
-    int i, k = 0, l = 0;
-
-    while(k < m && l < n)
-    {
-        // Print top row
-        for(i = l; i < n; ++i)
-        {
-            printf("%d ", a[k][i]);
-        }
-        k++;
-
-        // Print last column
-        for(i = k; i < m; ++i)
-        {
-            printf("%d ", a[i][n - 1]);
-        }
-        n--;
-
-        // Print bottom row
-        if(k < m)
-        {
-            for(i = n - 1; i >= l; --i)
-            {
-                printf("%d ", a[m - 1][i]);
-            }
-            m--;
-        }
-
-        // Print first column
-        if(l < n)
-        {
-            for(i = m - 1; i >= k; --i)
-            {
-                printf("%d ", a[i][l]);
-            }
-            l++;
-        }
-    }
-}
 ```
-# Output:
+
+## OUTPUT
+<img width="1049" height="616" alt="M42" src="https://github.com/user-attachments/assets/f9f4d39a-7c32-4172-904c-b8746cd4f34b" />
+
+
+## RESULT
+
+Thus the program to check whether the two numbers are equal or not using simple if statement has been executed successfully
+ 
+ 
+
+
+# EX-18-STRING-LOWERCASE-CONVERSION
+## AIM
+Write a C Program to convert the given string into lowercase.
+
+## ALGORITHM
+1.	Start the program.
+2.	Read a string variable.
+3.	Using tolower( ) function convert the given string into its lowercase.
+4.	Display the result.
+5.	Stop the program.
+
+## PROGRAM
 ```
-Spiral Order:
-1 2 3 4 8 12 16 15 14 13 9 5 6 7 11 10
-```
-# Result: 
-Thus, the program was implemented and executed successfully, and the required output was obtained.
-
-
-# 19AI304-Fundamentals-of-C-Programming-2025-Odd-M4
-# IAPR-4- Module 4 - FoC
-# Ex.No:20
-  Build a C program to convert a string such that the first and last characters, as well as the characters before and after each space, are converted to uppercase. Implement this using a user-defined parameterized function without return.
-# Date : 22/05/2026
-# Aim:
-To build a C program to convert a string as described above, using a user-defined parameterized function without return convertFirstCLastC(char str[]).
-# Algorithm:
-### Step 1:
-  Start
-### Step 2: 
-  Include the standard input-output library: #include<stdio.h>.  
-### Step 3: 
-  Declare a user-defined void function `convertFirstCLastC(char str[])` that takes the string as a parameter.
-### Step 4: 
- Inside `convertFirstCLastC(char str[])` function:
- - Find the length of the string `len`.  
- - Convert the first character `str[0]` to uppercase.  
- - Loop through the string from index `1` to `len-2`:  
-   - If a character is a space, capitalize the character before and after it.  
- - Convert the last character `str[len-1]` to uppercase.
-### Step 5: 
- In `main()` function:
- - Declare a string `str[100]`.  
- - Read the input string from the user.  
- - Call the function `convertFirstCLastC(char str[])`.  
- - Print the modified string.
-### Step 6: 
- Stop
-# Program:
-```
-#include<stdio.h>
-#include<string.h>
-
-void convertFirstCLastC(char str[]);
-
-int main()
-{
+#include <stdio.h>
+#include <ctype.h>
+int main() {
     char str[100];
-
-    printf("Enter a string: ");
+    int i;
     scanf("%[^\n]", str);
-
-    convertFirstCLastC(str);
-
-    printf("Modified string: %s", str);
-
+    for(i = 0; str[i] != '\0'; i++) {
+        str[i] = tolower(str[i]);
+    }
+    printf("String in lowercase: %s\n", str);
     return 0;
 }
 
-void convertFirstCLastC(char str[])
-{
-    int i, len;
+```
 
-    len = strlen(str);
+## OUTPUT
+<img width="1048" height="616" alt="M43" src="https://github.com/user-attachments/assets/094f7093-5c2f-4e5d-92d3-8f7f07bea19a" />
 
-    // Convert first character to uppercase
-    if(str[0] >= 'a' && str[0] <= 'z')
-    {
-        str[0] = str[0] - 32;
-    }
 
-    // Convert characters before and after space
-    for(i = 1; i < len - 1; i++)
-    {
-        if(str[i] == ' ')
-        {
-            if(str[i - 1] >= 'a' && str[i - 1] <= 'z')
-            {
-                str[i - 1] = str[i - 1] - 32;
-            }
 
-            if(str[i + 1] >= 'a' && str[i + 1] <= 'z')
-            {
-                str[i + 1] = str[i + 1] - 32;
-            }
-        }
-    }
+## RESULT
+Thus the program to convert the given string into lowercase has been executed successfully
+ 
+ 
 
-    // Convert last character to uppercase
-    if(str[len - 1] >= 'a' && str[len - 1] <= 'z')
-    {
-        str[len - 1] = str[len - 1] - 32;
-    }
+
+# EX-19-COUNT-OF-WORDS-IN-A-STRING
+## AIM
+Write a C Program to count the total number of words in a given string using do While loop.
+
+## ALGORITHM
+1.	Start the program.
+2.	Read a string variable.
+3.	Using for loop, inspect the string character by character.
+4.	Whenever a space is encountered increment count by 1.
+5.	Display the result.
+6.	Stop the program.
+
+## PROGRAM
+```
+#include <stdio.h>
+int main() {
+    char str[200];
+    int i = 0, count = 1;
+    scanf("%[^\n]", str);
+    do {
+        if(str[i] == ' ' || str[i] == '\t')
+            count++;
+        i++;
+    } while(str[i] != '\0');
+    printf("Total number of words: %d\n", count);
+    return 0;
 }
-```
-# Output:
-```
-Enter a string: saveetha engineering college
-Modified string: SaveethA EngineerinG CollegE
-```
-# Result: 
-Thus, the program was implemented and executed successfully, and the required output was obtained.
 
+```
+
+## OUTPUT
+
+<img width="1045" height="617" alt="M44" src="https://github.com/user-attachments/assets/b5405d59-6e07-4b45-a313-3b88a0359e64" />
+
+
+
+
+## RESULT
+Thus the program to count the total number of words in a given string using do While loop has been executed successfully
+ 
+ 
+
+
+# EX  -20 -COMPARING TWO STRINGS
+## AIM
+write a Program to compare two strings without using strcmp().
+## ALGORITHM
+Step 1: Start the program.
+<br>
+Step 2: Declare two character arrays c1 and c2 of size 100 to store the strings. Also, declare an integer variable,flag and initialize it to 0, and i for indexing. 
+<br>
+Step 3: Read the first string c1 using scanf("%[^\n]", c1); — this reads input until a newline is encountered 
+            (i.e., can include spaces).
+<br>
+Step 4: Read the second string c2 using scanf("%s", c2); — this reads input until a space or newline (i.e., no 
+            spaces in the second string).
+<br>
+Step 5: Start comparing characters of both strings from index i = 0.
+<br>
+Step 6: Repeat the following while neither c1[i] nor c2[i] is '\0' (i.e., end of string):
+<br>
+•	If c1[i] is not equal to c2[i], set flag = 1.
+<br>
+•	Increment i by 1.
+<br>
+Step 7: After the loop, check the value of flag:
+<br>
+•	If flag == 0, print "strings are same".
+<br>
+•	Otherwise, print "strings are not same".
+<br>
+Step 8: End the program.
+<br>
+
+## PROGRAM
+```
+#include <stdio.h>
+int main() {
+    char str1[100], str2[100];
+    int i = 0, flag = 0;
+    scanf("%s", str1);
+    scanf("%s", str2);
+    while(str1[i] != '\0' || str2[i] != '\0') {
+        if(str1[i] != str2[i]) {
+            flag = 1;
+            break;
+        }
+        i++;
+    }
+    if(flag == 0)
+        printf("Both strings are equal.\n");
+    else
+        printf("Strings are not equal.\n");
+    return 0;
+}
+
+```
+
+
+## OUTPUT
+<img width="1276" height="754" alt="M45" src="https://github.com/user-attachments/assets/cf93fbb0-0b3d-4f78-a1c0-0233ea4c54d9" />
+
+
+## RESULT
+Thus the C Program to compare two strings without using strcmp() has been executed successfully.
